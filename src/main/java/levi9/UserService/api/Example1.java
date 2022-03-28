@@ -2,7 +2,9 @@ package levi9.UserService.api;
 
 public class Example1 {
     private String field1;
-    private String field2;
+
+    public Example1() {
+    }
 
     public Example1(String field1) {
         this.field1 = field1;

@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @FeignClient(name = "user-service")
 public interface UserServiceApi {
-    @GetMapping
+    @GetMapping(value = "/")
     Example1 example();
 }

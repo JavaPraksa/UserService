@@ -11,7 +11,7 @@
             <directory>${project.build.outputDirectory}</directory>
             <outputDirectory/>
             <includes>
-                <include>levi9/UserService/api/*/</include>
+                <include>levi9/UserService/api/**/*</include>
             </includes>
         </fileSet>
     </fileSets>
