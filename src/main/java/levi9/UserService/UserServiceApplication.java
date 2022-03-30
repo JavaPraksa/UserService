@@ -29,7 +29,7 @@ public class UserServiceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		User admin = new User("admin", "admin", UserRole.ADMIN, "admin", "admin", "admin@mail.com");
+		User admin = User.builder().username("admin").password("admin").role(UserRole.ADMIN).firstName("admin").lastName("admin").email("admin@mail.com").build();
 		userRepository.save(admin);
 	}
 }
