@@ -1,7 +1,7 @@
 package levi9.UserService.controller;
 
 import levi9.UserService.dto.CredentialsDto;
-import levi9.UserService.dto.LoggedUserDto;
+import levi9.UserService.dto.UserDto;
 import levi9.UserService.filter.SimpleAuthFilter;
 import levi9.UserService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +26,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(HttpSession session, @RequestBody CredentialsDto credentials) {
-        LoggedUserDto loggedUser = userService.authenticate(credentials);
-        if (loggedUser != null) {
-            UUID token = UUID.randomUUID();
-            session.setAttribute("token", token);
-            session.setAttribute("user", loggedUser);
-            loggedUser.setToken(token.toString());
-            return ResponseEntity.ok(loggedUser);
-        }
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(userService.authenticate(credentials, session));
     }
 
     @GetMapping(value = "/isAuthenticated")
-    public Boolean isAuthenticated(@RequestParam String token){
+    public Boolean isAuthenticated(@RequestParam String token) {
         return simpleAuthFilter.isTokenValidInAnySession(token);
     }
 

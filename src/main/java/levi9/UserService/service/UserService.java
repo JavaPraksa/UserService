@@ -1,9 +1,13 @@
 package levi9.UserService.service;
 
 import levi9.UserService.dto.CredentialsDto;
-import levi9.UserService.dto.LoggedUserDto;
-import levi9.UserService.model.User;
+import levi9.UserService.dto.UserDto;
+import levi9.UserService.dto.UserRegistrationDto;
+
+import javax.servlet.http.HttpSession;
 
 public interface UserService {
-    LoggedUserDto authenticate(CredentialsDto credentials);
+    UserDto authenticate(CredentialsDto credentials, HttpSession session);
+
+    UserDto register(UserRegistrationDto newUser);
 }
