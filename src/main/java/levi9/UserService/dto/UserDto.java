@@ -1,6 +1,5 @@
 package levi9.UserService.dto;
 
-import levi9.UserService.model.User;
 import levi9.UserService.model.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -29,7 +29,7 @@ public class AuthController {
         return ResponseEntity.ok(userService.authenticate(credentials, session));
     }
 
-    @GetMapping(value = "/isAuthenticated")
+    @GetMapping(value = "/is-authenticated")
     public Boolean isAuthenticated(@RequestParam String token) {
         return simpleAuthFilter.isTokenValidInAnySession(token);
     }

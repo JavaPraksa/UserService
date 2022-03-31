@@ -9,6 +9,6 @@ public interface UserServiceApi {
     @GetMapping(value = "/")
     Example1 example();
 
-    @GetMapping(value = "/auth/isAuthenticated")
+    @GetMapping(value = "/auth/is-authenticated")
     Boolean isAuthenticated(@RequestParam String token);
 }
