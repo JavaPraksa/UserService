@@ -10,4 +10,9 @@ public interface UserService {
     UserDto authenticate(CredentialsDto credentials, HttpSession session);
 
     UserDto register(UserRegistrationDto newUser);
+
+
+    UserDto loadUserByUsername(String username);
+
+
 }
