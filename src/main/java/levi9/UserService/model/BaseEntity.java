@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public abstract class BaseEntity {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "seqGen", sequenceName = "seq1", initialValue = 4, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGen")
     private Long id;
 }
