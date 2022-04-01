@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
         UUID token = UUID.randomUUID();
         session.setAttribute("token", token);
         session.setAttribute("user", user);
-        return UserDto.builder().role(user.getRole()).username(user.getUsername()).token(token.toString()).build();
+        return UserDto.builder().id(user.getId()).role(user.getRole()).username(user.getUsername()).token(token.toString()).build();
     }
 
     @Override

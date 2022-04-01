@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDto {
+    private Long id;
     private String token;
     private UserRole role;
     private String username;

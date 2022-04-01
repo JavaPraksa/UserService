@@ -20,8 +20,7 @@ import javax.servlet.http.HttpSession;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -35,6 +34,7 @@ public class UserServiceTest {
     @Test
     public void testUserAuthentication(){
         User user1 = User.builder().username("testUser1").password("testPassword1").role(UserRole.CLIENT).build();
+        user1.setId(65464L);
         CredentialsDto okCredentials = CredentialsDto.builder().username("testUser1").password("testPassword1").build();
         CredentialsDto wrongUsernameCredentials = CredentialsDto.builder().username("wrongUsername").password("testPassword1").build();
         CredentialsDto wrongPasswordCredentials = CredentialsDto.builder().username("testUser1").password("wrongPassword").build();
