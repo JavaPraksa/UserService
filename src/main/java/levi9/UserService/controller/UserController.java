@@ -27,7 +27,6 @@ public class UserController {
 
     @GetMapping(value = "/{username}")
     public ResponseEntity<UserDto> getUserByUsername(@PathVariable String username){
-        System.out.println(userService.loadUserByUsername(username));
         return new ResponseEntity<>(userService.loadUserByUsername(username), HttpStatus.OK);
     }
 
