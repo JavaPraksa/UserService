@@ -29,6 +29,12 @@ public class AuthController {
         return ResponseEntity.ok(userService.authenticate(credentials, session));
     }
 
+    @PutMapping("/logout")
+    public ResponseEntity<Object> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping(value = "/is-authenticated")
     public Boolean isAuthenticated(@RequestParam String token) {
         return simpleAuthFilter.isTokenValidInAnySession(token);
