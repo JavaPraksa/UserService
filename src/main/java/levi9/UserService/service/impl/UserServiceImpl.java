@@ -50,4 +50,13 @@ public class UserServiceImpl implements UserService {
         user.setRole(UserRole.CLIENT);
         return mapper.map(userRepository.save(user), UserDto.class);
     }
+
+
+
+    @Override
+    public UserDto loadUserByUsername(String username) {
+        return mapper.map(userRepository.findByUsername(username),UserDto.class);
+    }
+
+
 }
