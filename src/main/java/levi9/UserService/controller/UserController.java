@@ -32,6 +32,7 @@ public class UserController {
     }
 
     //update user
+    @CrossOrigin
     @PutMapping("/updateUser/{username}")
     public ResponseEntity<UserDto> updateUser(@PathVariable String username,@RequestBody UserDto userDetails) {
         UserDto userDto = userService.editUserDetails(username,userDetails);
