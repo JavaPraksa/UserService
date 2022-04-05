@@ -14,22 +14,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableFeignClients(clients = VehicleServiceApi.class)
 @SpringBootApplication
-public class UserServiceApplication implements CommandLineRunner {
-
-	private UserRepository userRepository;
-
-	@Autowired
-	public UserServiceApplication(UserRepository userRepository){
-		this.userRepository = userRepository;
-	}
+public class UserServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserServiceApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		User admin = User.builder().username("admin").password("admin").role(UserRole.ADMIN).firstName("admin").lastName("admin").email("admin@mail.com").build();
-		userRepository.save(admin);
-	}
 }
