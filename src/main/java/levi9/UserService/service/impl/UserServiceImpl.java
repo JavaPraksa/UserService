@@ -63,14 +63,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto editUserDetails(String username,UserDto userDetails ) {
-            User userDetails2 = mapper.map(userDetails,User.class);
 
-            User oldUser = mapper.map(userRepository.findByUsername(username),User.class);
+            User oldUser = userRepository.findByUsername(username);
 
-            oldUser.setFirstName(userDetails2.getFirstName());
-            oldUser.setLastName(userDetails2.getLastName());
-            oldUser.setEmail(userDetails2.getEmail());
-
+            oldUser.setFirstName(userDetails.getFirstName());
+            oldUser.setLastName(userDetails.getLastName());
+            oldUser.setEmail(userDetails.getEmail());
 
             User updatedUser = userRepository.save(oldUser);
 

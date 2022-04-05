@@ -25,15 +25,15 @@ public class UserController {
         return ResponseEntity.ok(userService.register(newUser));
     }
 
-    //get user by its username
-    @GetMapping(value = "/getUser/{username}")
+
+    @GetMapping(value = "/{username}")
     public ResponseEntity<UserDto> getUserByUsername(@PathVariable String username){
         return new ResponseEntity<>(userService.loadUserByUsername(username), HttpStatus.OK);
     }
 
-    //update user
+
     @CrossOrigin
-    @PutMapping("/updateUser/{username}")
+    @PutMapping("/{username}")
     public ResponseEntity<UserDto> updateUser(@PathVariable String username,@RequestBody UserDto userDetails) {
         UserDto userDto = userService.editUserDetails(username,userDetails);
         return ResponseEntity.ok(userDto);
