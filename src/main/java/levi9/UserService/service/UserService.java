@@ -14,5 +14,5 @@ public interface UserService {
 
     UserDto loadUserByUsername(String username);
 
-
+    UserDto editUserDetails(String username,UserDto userDetails);
 }

@@ -2,6 +2,7 @@ package levi9.UserService.controller;
 
 import levi9.UserService.dto.UserDto;
 import levi9.UserService.dto.UserRegistrationDto;
+import levi9.UserService.model.User;
 import levi9.UserService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,13 @@ public class UserController {
         return new ResponseEntity<>(userService.loadUserByUsername(username), HttpStatus.OK);
     }
 
+
+    @CrossOrigin
+    @PutMapping("/{username}")
+    public ResponseEntity<UserDto> updateUser(@PathVariable String username,@RequestBody UserDto userDetails) {
+        UserDto userDto = userService.editUserDetails(username,userDetails);
+        return ResponseEntity.ok(userDto);
+    }
 
 
 }

@@ -10,6 +10,7 @@ import levi9.UserService.repository.UserRepository;
 import levi9.UserService.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -58,5 +59,20 @@ public class UserServiceImpl implements UserService {
         return mapper.map(userRepository.findByUsername(username),UserDto.class);
     }
 
+
+
+    @Override
+    public UserDto editUserDetails(String username,UserDto userDetails ) {
+
+            User oldUser = userRepository.findByUsername(username);
+
+            oldUser.setFirstName(userDetails.getFirstName());
+            oldUser.setLastName(userDetails.getLastName());
+            oldUser.setEmail(userDetails.getEmail());
+
+            User updatedUser = userRepository.save(oldUser);
+
+            return mapper.map(updatedUser,UserDto.class);
+    }
 
 }
