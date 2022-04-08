@@ -52,14 +52,10 @@ public class UserServiceImpl implements UserService {
         return mapper.map(userRepository.save(user), UserDto.class);
     }
 
-
-
     @Override
     public UserDto loadUserByUsername(String username) {
         return mapper.map(userRepository.findByUsername(username),UserDto.class);
     }
-
-
 
     @Override
     public UserDto editUserDetails(String username,UserDto userDetails ) {
