@@ -18,6 +18,6 @@ public interface UserServiceApi {
     @GetMapping(value = "/user/{username}")
     ResponseEntity<UserDto> getUserByUsername(@PathVariable String username);
 
-    @GetMapping("/getEmailById/{id}")
+    @GetMapping("/user/getEmailById/{id}")
     String getUserEmailById(@PathVariable Long id);
 }
