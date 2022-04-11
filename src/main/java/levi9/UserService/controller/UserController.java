@@ -1,5 +1,6 @@
 package levi9.UserService.controller;
 
+import levi9.NotificationService.api.NotificationServiceApi;
 import levi9.UserService.dto.UserDto;
 import levi9.UserService.dto.UserRegistrationDto;
 import levi9.UserService.model.User;
@@ -20,9 +21,17 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Autowired
+    private NotificationServiceApi notificationServiceApi;
+
+    @GetMapping("/notify")
+    public String example2() {return notificationServiceApi.example1();}
+
     @PostMapping("/register")
     public ResponseEntity<UserDto> register(@RequestBody UserRegistrationDto newUser) {
-        return ResponseEntity.ok(userService.register(newUser));
+        UserDto userDto = userService.register(newUser);
+        notificationServiceApi.sendsesMessageRegistration(newUser.getEmail());
+        return ResponseEntity.ok(userDto);
     }
 
 
@@ -31,6 +40,11 @@ public class UserController {
         return new ResponseEntity<>(userService.loadUserByUsername(username), HttpStatus.OK);
     }
 
+    @GetMapping("/getEmailById/{id}")
+    public String getUserEmailById(@PathVariable Long id) {
+        String userEmail = userService.loadUserById(id).getEmail();
+         return userEmail;
+    }
 
     @CrossOrigin
     @PutMapping("/{username}")
