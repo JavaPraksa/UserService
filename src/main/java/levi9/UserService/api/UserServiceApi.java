@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "user-service")
 public interface UserServiceApi {
-    @GetMapping(value = "/")
-    Example1 example();
 
     @GetMapping(value = "/auth/is-authenticated")
     Boolean isAuthenticated(@RequestParam String token);

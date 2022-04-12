@@ -24,8 +24,7 @@ public class UserController {
     @Autowired
     private NotificationServiceApi notificationServiceApi;
 
-    @GetMapping("/notify")
-    public String example2() {return notificationServiceApi.example1();}
+
 
     @PostMapping("/register")
     public ResponseEntity<UserDto> register(@RequestBody UserRegistrationDto newUser) {
